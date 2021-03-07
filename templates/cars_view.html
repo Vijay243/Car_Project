@@ -1,0 +1,45 @@
+{% extends 'common_admin.html' %}
+{% load static %}
+{% block common %}
+
+<div class="box">
+
+    <table align="center" border="0">
+        <tr>
+    <th colspan="7">
+        <h1 style="color: whitesmoke;font-size: 30px;font-family: David;text-align: center"> <b>Cars Details</b> </h1>
+    </th>
+</tr> <tr>
+            <th width="80">Car Idno</th>
+            <th>Car Model</th>
+            <th width="200">Name</th>
+            <th width="80">Milege(KMPL)</th>
+            <th width="200">Advance Amount(Rupees)</th>
+            <th width="200">Rent Price Hour(rupees)</th>
+            <th width="100">Day Price(rupees)</th>
+            <th>Image</th>
+             <th style="color:black;" width="100">Update</th>
+            <th style="color:black;">Delete</th>
+        </tr>
+        {% for x in car %}
+             <tr>
+            <th width="80">{{x.c_id}}</th>
+            <th>{{ x.c_model }}</th>
+            <th width="200">{{x.c_name}}</th>
+            <th width="80">{{ x.c_milege }}</th>
+            <th width="200">{{x.c_advance}}</th>
+            <th width="200">{{ x.c_rent_price }}</th>
+            <th width="100">{{ x.c_day_price }}</th>
+            <th ><img src="{{ x.c_image.url }}" width="150" height="100"> </th>
+                 <th>
+                <a href="#">
+                <img src="{% static 'images/logs/update1.png' %}" width="50" height="50"></a>
+           </th>
+           <th><a href="#">
+               <img src="{% static 'images/logs/delete4.png' %}" width="50" height="50"></a>
+           </th>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

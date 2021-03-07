@@ -1,0 +1,65 @@
+{% extends 'Manager_home.html' %}
+
+{% block common %}
+            <table align="center" border="0">
+         {% if msg %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Success...!</strong> {{msg}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+            {% endif%}
+        <form action="{% url 'car_save' %}" method="post"  enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <tr>
+                <th colspan="3" style="text-align: center;font-size: 30px;color: white">Car Registration</th>
+            </tr><br>
+            <tr>
+                <th>Car Idno </th>
+                <th>{{ form.c_id }}</th>
+                <th>{{ form.c_id.errors }}</th>
+            </tr>
+             <tr>
+                <th> Car Model </th>
+                <th>{{ form.c_model }}</th>
+                <th>{{form.c_model.errors }}</th>
+            </tr>
+            <tr>
+                <th> Name </th>
+                <th>{{ form.c_name }}</th>
+                <th>{{form.c_name.errors }}</th>
+            </tr>
+            <tr>
+                <th>Milege(KMPH)</th>
+                <th>{{ form.c_milege }}</th>
+                <th>{{ form.c_milege.errors }}</th>
+            </tr>
+            <tr>
+                <th>Advance(rupees) </th>
+                <th>{{ form.c_advance }}</th>
+                <th>{{ form.c_advance.errors }}</th>
+            </tr>
+            <tr>
+                <th>Rent per Hour(rupees) </th>
+                <th>{{ form.c_rent_price }}</th>
+                <th>{{ form.c_rent_price.errors }}</th>
+            </tr>
+            <tr>
+                <th>Day-Price(rupees) </th>
+                <th>{{ form.c_day_price }}</th>
+                <th>{{ form.c_day_price.errors }}</th>
+            </tr>
+             <tr>
+                <th>Photo</th>
+                <th>{{ form.c_image }}</th>
+                <th>{{ form.c_image.errors }}</th>
+            </tr>
+
+            <tr>
+            <th colspan="3" style="text-align: center"><button class="btn btn-primary" type="submit">Save</button></th>
+        </tr></form>
+
+        </table>
+{% endblock %}

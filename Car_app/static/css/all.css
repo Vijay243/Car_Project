@@ -1,0 +1,43 @@
+body{
+    background-image: url("../images/wallpapers/backg.jpg");
+    background-color: lightsteelblue;
+    background-size: 100%;
+    text-align: -webkit-center;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+}
+
+.box {
+    width: 500px;
+    height: 350px;
+    padding:  20px;
+    margin: 100px auto;
+
+    background-color: darkorange;
+    background-size: cover;
+    text-align: center;
+    opacity: 0.65;
+}
+.box1 {
+    width: 500px;
+    height: 350px;
+    padding:  20px;
+    margin: 100px auto;
+
+    background-color: navy;
+    background-size: cover;
+    text-align: center;
+    opacity: 0.75;
+}
+
+.box2 {
+    width: 500px;
+    height: 350px;
+    padding: 20px;
+    margin: 100px auto;
+
+    background-color: fuchsia;
+    background-size: cover;
+    text-align: center;
+    opacity: 0.65;
+}

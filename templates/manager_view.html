@@ -1,0 +1,81 @@
+{% extends 'common_admin.html' %}
+{% load static %}
+{% block common %}
+
+    <h1 style="color: white;font-size: 30px;text-align: center;font-family: 'Calibri Light'"> <b>
+    <a href="{% url 'add_manager' %}">
+        Add Manager
+    </a>
+    </b></h1>
+<div class="box2">
+
+{% if object_list %}
+    <table align="center" border="0">
+    {% for x in messages%}
+                   <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Success...!</strong> {{x}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button> </div>
+       {% endfor%}
+<tr>
+    <th colspan="9">
+        <h1 style="color: blueviolet;font-size: 30px;font-family: David;text-align: center"> <b>Manager Details</b> </h1>
+
+    </th>
+</tr>
+
+        <tr>
+            <th style="color:black;">Manager Idno</th>
+            <th style="color:black;" width="200">Name</th>
+            <th style="color:black;" width="80">Gender</th>
+            <th style="color:black;">Expireance</th>
+            <th style="color:black;" width="100">Mobile No</th>
+            <th style="color:black;"  width="400">Address</th>
+            <th style="color:black;" width="200">Email</th>
+            <th style="color:black;" width="150">Photo</th>
+            <th style="color:black;" width="100">Update</th>
+            <th style="color:black;">Delete</th>
+        </tr>
+       {% for x in object_list %}
+           <tr>
+            <td style="color:black;" >{{x.idno}}</td>
+            <td  style="color:black;"width="200">{{x.name}}</td>
+            <td style="color:black;">{{x.gender}}</td>
+            <td style="color:black;">{{x.expireance}}</td>
+            <td style="color:black;" width="100">{{x.Mobile}}</td>
+            <td style="color:black;" width="400">{{x.Address}}</td>
+            <td style="color:black;" width="200">{{x.Email}}
+                <form action="{% url 'send_mail_manager' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="e" value="{{ x.Email }}">
+                    <input type="hidden" name="p" value="{{ x.password }}">
+            <button type="submit" class="btn btn-warning">Send mail</button>
+                    </form>
+            </td>
+               <td style="color:black;">
+                   <img src="{{ x.pic.url }}" width="80" height="80">
+               </td>
+
+            <td>
+                <a href="{% url 'update_manager' x.idno %}">
+                <img src="{% static 'images/logs/update1.png' %}" width="50" height="50"></a>
+           </td>
+           <td><a href="{% url 'delete_manager' x.idno %}">
+               <img src="{% static 'images/logs/delete4.png' %}" width="50" height="50"></a>
+           </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+<table align="center" border="2">
+    <tr>
+        <th>
+            <h1> No data Avaliable</h1>
+        </th>
+    </tr>
+</table>
+{% endif %}
+</div>
+{% endblock %}

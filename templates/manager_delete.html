@@ -1,0 +1,43 @@
+{% extends 'common_admin.html' %}
+{% load static %}
+{% block common %}
+<div class="box2">
+<form method="post">
+    {% csrf_token %}
+    <table align="center" border="0">
+
+<tr>
+    <th colspan="9">
+        <h1 style="color: blueviolet;font-size: 30px;font-family: David;text-align: center"> <b>Manager Details</b> </h1>
+
+    </th>
+</tr>
+        <tr>
+            <th style="color:black;">Manager Idno</th>
+            <th style="color:black;" width="200">Name</th>
+            <th style="color:black;" width="80">Gender</th>
+            <th style="color:black;">Expireance</th>
+            <th style="color:black;" width="100">Mobile No</th>
+            <th style="color:black;"  width="400">Address</th>
+            <th style="color:black;" width="200">Email</th>
+        </tr>
+
+           <tr>
+            <td style="color:black;" >{{object.idno}}</td>
+            <td  style="color:black;"width="200">{{object.name}}</td>
+            <td style="color:black;">{{object.gender}}</td>
+            <td style="color:black;">{{object.expireance}}</td>
+            <td style="color:black;" width="100">{{object.Mobile}}</td>
+            <td style="color:black;" width="400">{{object.Address}}</td>
+            <td style="color:black;" width="200">{{object.Email}}</td>
+               <td style="color:black;">
+                   <img src="{{ object.pic.url }}" width="80" height="80">
+               </td>
+        </tr>
+    <tr><th colspan="10">
+
+        <button type="submit" class="btn btn-danger">Conform Delete Manager</button>
+
+    </table>
+    </form>
+{% endblock %}
